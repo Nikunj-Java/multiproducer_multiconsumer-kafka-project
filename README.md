@@ -229,6 +229,22 @@ This distinction is extremely important:
 Different Groups = Fan-out / Broadcast behavior
 Same Group      = Load balancing / Work sharing behavior
 ```
+to execute this check the profiles in [text](kafka-settlement-consumer/src/main/resources)
+
+```
+run both profile
+```
+- Default Profile
+```
+mvn spring-boot:run
+```
+- Run Another Profile
+```
+mvn spring-boot:run -Dspring-boot.run.profiles=i1
+```
+```
+Here Both are running on different Springboot port, But They are using same Group, so KAFKA will not send every event to both, now Kafka Will do the ALB automatically, try sending 5-10 request with different key, and check the console output
+```
 
 ## 8. Partitions, keys and offsets
 
